@@ -1,11 +1,796 @@
-<iframe src="static/hieutrungdao_resume.pdf" style="width: 100%;height: 100%;border: none;"></iframe>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en" style="width:100%; height:100%;">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Hieu's Resume</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hieu Trung Dao — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+  media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"></noscript>
+<style>
+/* ── Variables ─────────────────────────────────────── */
+:root {
+  --accent:        #B5232B;
+  --accent-hover:  #8a1a1f;
+  --text-primary:  #2c2c2c;
+  --text-secondary:#5a5a5a;
+  --text-muted:    #888;
+  --bg:            #ffffff;
+  --bg-page:       #ffffff;
+  --bg-controls:   #f4f4f4;
+  --border:        #e0e0e0;
+  --pill-bg:       #efefef;
+  --pill-text:     #444;
+  --shadow:        0 2px 24px rgba(0,0,0,0.09);
+  --font-heading:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:     -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --max-width:     210mm;
+  --page-pad:      13mm 14mm 14mm 14mm;
+}
+[data-theme="dark"] {
+  --text-primary:  #e4e4e4;
+  --text-secondary:#aaa;
+  --text-muted:    #777;
+  --bg:            #111;
+  --bg-page:       #1c1c1e;
+  --bg-controls:   #1a1a1a;
+  --border:        #333;
+  --pill-bg:       #2a2a2a;
+  --pill-text:     #ccc;
+  --shadow:        0 2px 24px rgba(0,0,0,0.5);
+}
+
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { color: inherit; }
+
+/* ── Body / Page wrapper ───────────────────────────── */
+body {
+  font-family: var(--font-body);
+  font-size: 10pt;
+  color: var(--text-primary);
+  background: var(--bg);
+  line-height: 1.4;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ── Controls (screen only) ────────────────────────── */
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 20px;
+  background: var(--bg-controls);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+}
+.variant-tabs { display: flex; gap: 4px; }
+.tab {
+  padding: 5px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 8.5pt;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  letter-spacing: 0.03em;
+}
+.tab.active, .tab:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 10px;
+  color: var(--text-secondary);
+  transition: border-color 0.15s, color 0.15s;
+  line-height: 1;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.controls-label {
+  font-size: 7.5pt;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Resume page ───────────────────────────────────── */
+.resume-page {
+  max-width: var(--max-width);
+  margin: 28px auto;
+  padding: var(--page-pad);
+  background: var(--bg-page);
+  box-shadow: var(--shadow);
+  border-radius: 3px;
+}
+
+/* ── Header ────────────────────────────────────────── */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 4px;
+}
+.header-left { flex: 1; }
+.name {
+  font-family: var(--font-heading);
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.title-line {
+  font-size: 10.5pt;
+  color: var(--accent);
+  margin: 5px 0 3px;
+  letter-spacing: 0.05em;
+}
+.header-location {
+  font-size: 9pt;
+  color: var(--text-secondary);
+}
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+.contact-block a {
+  font-size: 8.5pt;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.12s;
+}
+.contact-block a:hover { color: var(--accent); }
+.contact-icon { font-size: 9pt; opacity: 0.7; }
+
+/* ── Section ───────────────────────────────────────── */
+.resume-body { display: flex; flex-direction: column; }
+
+.resume-section {
+  animation: fadeUp 0.35s ease both;
+}
+.resume-section:nth-child(2) { animation-delay: 0.04s; }
+.resume-section:nth-child(3) { animation-delay: 0.08s; }
+.resume-section:nth-child(4) { animation-delay: 0.12s; }
+.resume-section:nth-child(5) { animation-delay: 0.16s; }
+.resume-section:nth-child(6) { animation-delay: 0.20s; }
+.resume-section:nth-child(7) { animation-delay: 0.24s; }
+.resume-section:nth-child(8) { animation-delay: 0.28s; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+  font-family: var(--font-body);
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 3px;
+  margin-top: 13px;
+  margin-bottom: 6px;
+}
+
+/* ── Summary ───────────────────────────────────────── */
+.summary-text {
+  font-size: 9.5pt;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ── Entry (job / edu / pub) ───────────────────────── */
+.entry { margin-bottom: 8px; }
+.entry:last-child { margin-bottom: 0; }
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.entry-left { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.entry-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; flex-shrink: 0; }
+.entry-title { font-size: 10pt; font-weight: 700; color: var(--text-primary); }
+.entry-org   { font-size: 9.5pt; font-weight: 600; color: var(--accent); }
+.entry-location { font-size: 8.5pt; color: var(--text-secondary); font-style: italic; }
+.entry-date     { font-size: 8.5pt; color: var(--text-secondary); font-style: italic; }
+.entry-items {
+  margin: 4px 0 0 0;
+  padding-left: 1.1em;
+  list-style-type: disc;
+}
+.entry-items li {
+  font-size: 9pt;
+  line-height: 1.48;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.entry-items li:last-child { margin-bottom: 0; }
+
+/* ── Publication venue ─────────────────────────────── */
+.pub-venue {
+  font-size: 8.5pt;
+  font-variant: small-caps;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+.pub-venue a {
+  color: var(--accent);
+  text-decoration: none;
+  font-variant: normal;
+  font-size: 8pt;
+}
+.pub-venue a:hover { text-decoration: underline; }
+.pub-authors { font-size: 8.5pt; color: var(--text-secondary); margin-top: 2px; }
+
+/* ── Honors ────────────────────────────────────────── */
+.honor-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 6px 12px;
+  align-items: baseline;
+  padding: 3px 0;
+  font-size: 9pt;
+}
+.honor-award { font-weight: 600; }
+.honor-event { color: var(--text-secondary); font-size: 8.5pt; }
+.honor-location { color: var(--text-muted); font-size: 8pt; font-style: italic; }
+.honor-date { color: var(--accent); font-size: 8.5pt; font-weight: 600; text-align: right; white-space: nowrap; }
+
+/* ── Skills ────────────────────────────────────────── */
+.skills-grid { display: flex; flex-direction: column; gap: 5px; }
+.skill-category {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.skill-label {
+  font-weight: 700;
+  font-size: 9pt;
+  color: var(--text-primary);
+  min-width: 88px;
+  flex-shrink: 0;
+}
+.skill-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+.pill {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 8pt;
+  transition: background 0.15s, color 0.15s;
+  cursor: default;
+  white-space: nowrap;
+}
+.pill:hover { background: var(--accent); color: #fff; }
+
+/* ── Competitions / Certs ──────────────────────────── */
+.comp-entry { margin-bottom: 7px; }
+.comp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; }
+.comp-title  { font-weight: 700; font-size: 9.5pt; }
+.comp-award  { color: var(--accent); font-weight: 600; font-size: 9pt; }
+.comp-date   { color: var(--text-secondary); font-size: 8.5pt; font-style: italic; }
+.comp-desc   { font-size: 9pt; color: var(--text-secondary); margin-top: 3px; line-height: 1.45; }
+
+.cert-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 2px 0;
+  font-size: 9pt;
+}
+.cert-name   { font-weight: 700; }
+.cert-cred   { color: var(--text-secondary); }
+.cert-date   { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+
+/* ── Variant content toggling ──────────────────────── */
+.variant-academic,
+.variant-industry,
+.variant-fellowship { display: none; }
+.variant-general    { display: revert; }
+
+body[data-variant="academic"] .variant-general   { display: none; }
+body[data-variant="academic"] .variant-academic  { display: revert; }
+
+body[data-variant="industry"] .variant-general   { display: none; }
+body[data-variant="industry"] .variant-industry  { display: revert; }
+
+/* Fellowship: inherits academic bullets, swaps summary paragraph */
+body[data-variant="fellowship"] .variant-general    { display: none; }
+body[data-variant="fellowship"] .variant-academic   { display: revert; }
+body[data-variant="fellowship"] p.variant-academic  { display: none; }
+body[data-variant="fellowship"] .variant-fellowship { display: revert; }
+
+/* AGI: inherits academic bullets, swaps summary paragraph */
+body[data-variant="agi"] .variant-general    { display: none; }
+body[data-variant="agi"] .variant-academic   { display: revert; }
+body[data-variant="agi"] p.variant-academic  { display: none; }
+body[data-variant="agi"] .variant-agi        { display: revert; }
+
+/* ── Section ordering ──────────────────────────────── */
+/* General */
+body[data-variant="general"] [data-section="summary"]      { order: 1; }
+body[data-variant="general"] [data-section="experience"]   { order: 2; }
+body[data-variant="general"] [data-section="education"]    { order: 3; }
+body[data-variant="general"] [data-section="publications"] { order: 4; }
+body[data-variant="general"] [data-section="honors"]       { order: 5; }
+body[data-variant="general"] [data-section="competitions"] { order: 7; }
+body[data-variant="general"] [data-section="certificates"] { order: 8; }
+/* Academic */
+body[data-variant="academic"] [data-section="summary"]      { order: 1; }
+body[data-variant="academic"] [data-section="education"]    { order: 2; }
+body[data-variant="academic"] [data-section="publications"] { order: 3; }
+body[data-variant="academic"] [data-section="experience"]   { order: 4; }
+body[data-variant="academic"] [data-section="honors"]       { order: 5; }
+body[data-variant="academic"] [data-section="competitions"] { order: 6; }
+body[data-variant="academic"] [data-section="certificates"] { order: 7; }
+/* Industry */
+body[data-variant="industry"] [data-section="summary"]      { order: 1; }
+body[data-variant="industry"] [data-section="experience"]   { order: 2; }
+body[data-variant="industry"] [data-section="publications"] { order: 3; }
+body[data-variant="industry"] [data-section="education"]    { order: 5; }
+body[data-variant="industry"] [data-section="honors"]       { order: 6; }
+body[data-variant="industry"] [data-section="competitions"] { order: 7; }
+body[data-variant="industry"] [data-section="certificates"] { order: 8; }
+/* Fellowship: publications lead, then experience */
+body[data-variant="fellowship"] [data-section="summary"]      { order: 1; }
+body[data-variant="fellowship"] [data-section="publications"] { order: 2; }
+body[data-variant="fellowship"] [data-section="experience"]   { order: 3; }
+body[data-variant="fellowship"] [data-section="honors"]       { order: 4; }
+body[data-variant="fellowship"] [data-section="education"]    { order: 5; }
+body[data-variant="fellowship"] [data-section="competitions"] { order: 6; }
+body[data-variant="fellowship"] [data-section="certificates"] { order: 7; }
+/* AGI: experience first, publications after */
+body[data-variant="agi"] [data-section="summary"]      { order: 1; }
+body[data-variant="agi"] [data-section="experience"]   { order: 2; }
+body[data-variant="agi"] [data-section="publications"] { order: 3; }
+body[data-variant="agi"] [data-section="honors"]       { order: 4; }
+body[data-variant="agi"] [data-section="education"]    { order: 5; }
+body[data-variant="agi"] [data-section="competitions"] { order: 6; }
+body[data-variant="agi"] [data-section="certificates"] { order: 7; }
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .resume-header { flex-direction: column; }
+  .contact-block { align-items: flex-start; }
+  .honor-row { grid-template-columns: 1fr auto; }
+  .honor-location, .honor-event { display: none; }
+  .resume-page { margin: 0; border-radius: 0; box-shadow: none; }
+}
+
+/* ── Print ─────────────────────────────────────────── */
+@media print {
+  @page { size: A4; margin: 0.8cm 1.4cm 1.5cm 1.4cm; }
+
+  html, body { background: #fff !important; color: #000 !important; }
+  .controls  { display: none !important; }
+
+  .resume-page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Preserve accent red exactly */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Kill all animations */
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+
+  /* Links: keep href but no underline */
+  a { text-decoration: none !important; color: inherit !important; }
+  .contact-block a { color: var(--text-secondary) !important; }
+  .pub-venue a { color: var(--accent) !important; }
+
+  /* Pills: static in print */
+  .pill { background: #efefef !important; color: #444 !important; }
+
+  /* Switch flex → block so browser can paginate naturally */
+  .resume-body { display: block !important; }
+
+  /* Page break control — allow entries to flow across pages naturally */
+  .section-title  { break-after: avoid; page-break-after: avoid; }
+  .entry-header   { break-after: avoid; page-break-after: avoid; }
+  .entry          { break-inside: auto;  page-break-inside: auto; orphans: 3; widows: 3; }
+  .honor-row      { break-inside: avoid; page-break-inside: avoid; }
+  .comp-entry     { break-inside: avoid; page-break-inside: avoid; }
+}
+</style>
 </head>
-  <body style="width:100%; height:100%; margin:0;">
-    <iframe src="https://docs.google.com/gview?url=static/hieutrungdao_resume.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
-  </body>
+<body data-variant="general">
+
+<!-- ═══ CONTROLS (screen only) ═══════════════════════════════════════ -->
+<div class="controls" aria-label="Resume controls">
+  <span class="controls-label">Variant</span>
+  <div class="variant-tabs" role="tablist">
+    <button class="tab active" role="tab" data-variant="general"     aria-selected="true">General</button>
+    <button class="tab"        role="tab" data-variant="academic"    aria-selected="false">Academic</button>
+    <button class="tab"        role="tab" data-variant="industry"    aria-selected="false">Industry</button>
+    <button class="tab"        role="tab" data-variant="fellowship"  aria-selected="false">Fellowship</button>
+    <button class="tab"        role="tab" data-variant="agi"         aria-selected="false">AGI Research</button>
+  </div>
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+</div>
+
+<!-- ═══ RESUME PAGE ═══════════════════════════════════════════════════ -->
+<div class="resume-page">
+
+  <!-- HEADER -->
+  <header class="resume-header">
+    <div class="header-left">
+      <h1 class="name">Hieu Trung Dao</h1>
+      <p class="title-line">
+        LLM &thinsp;·&thinsp; Agentic &thinsp;·&thinsp; AI Engineer<span class="variant-academic"> &thinsp;·&thinsp; Researcher</span>
+      </p>
+      <p class="header-location">Hanoi, Vietnam</p>
+    </div>
+    <address class="contact-block">
+      <a href="mailto:hieutrungdao.cs@gmail.com">
+        <span class="contact-icon">✉</span>hieutrungdao.cs@gmail.com
+      </a>
+      <a href="tel:+84918873205">
+        <span class="contact-icon">✆</span>(+84) 918873205
+      </a>
+      <a href="https://hieutrungdao.github.io" target="_blank" rel="noopener">
+        <span class="contact-icon">🌐</span>hieutrungdao.github.io
+      </a>
+      <a href="https://github.com/hieutrungdao" target="_blank" rel="noopener">
+        <span class="contact-icon">⌥</span>github.com/hieutrungdao
+      </a>
+      <a href="https://linkedin.com/in/hieu-dao-597a83187" target="_blank" rel="noopener">
+        <span class="contact-icon">in</span>hieu-dao-597a83187
+      </a>
+    </address>
+  </header>
+
+  <!-- BODY -->
+  <main class="resume-body">
+
+    <!-- ── SUMMARY ── -->
+    <section class="resume-section" data-section="summary">
+      <h2 class="section-title">Summary</h2>
+      <p class="summary-text variant-general">
+        AI Engineer with 3+ years at FPT Software AI Center, delivering production LLM applications, agentic AI platforms, and MLOps infrastructure across enterprise and industrial domains. Applies AI across the full development lifecycle — from automated research and agentic planning through AI-assisted implementation, testing, and code review to real-time monitoring agents embedded in delivery workflows. Specialized a large-scale MoE LLM for the mainframe domain through a multi-stage alignment pipeline. Published researcher on LLM-based mainframe modernization; creator of <strong>MainframeBench</strong>, the first COBOL/JCL comprehension benchmark. Two-time international AI innovation award winner (IT World Awards Gold Globee; Asia-Pacific Stevie Gold Awards). Active contributor to Vietnam's AI ecosystem as Lab Coach at VinGroup's AI20K program.
+      </p>
+      <p class="summary-text variant-academic">
+        AI Engineer and Researcher at FPT Software AI Center specializing in large language models, agentic systems, and applied ML for software engineering tasks. Published work on LLM-based mainframe modernization introduces <strong>MainframeBench</strong> — the first benchmark for COBOL/JCL/PL/I code understanding — with significant accuracy and summarization improvements covered by global AI media. Conducted a systematic alignment research campaign on a large-scale MoE LLM (SFT → SLERP → ORPO → DAPO); contributions include a novel MoE-aware SLERP merging technique. Research interests span LLM alignment methodology, multi-agent system design, and scalable AI infrastructure. Recipient of two international AI innovation awards (IT World Awards Gold Globee; Asia-Pacific Stevie Gold). Currently mentoring AI practitioners at VinGroup's AI20K program.
+      </p>
+      <p class="summary-text variant-industry">
+        LLM and Agentic AI Engineer with 3+ years at FPT Software AI Center, delivering production AI systems end-to-end — from MoE LLM specialization and alignment to multi-agent orchestration, hybrid RAG pipelines, and agent harness engineering at enterprise scale. Applies AI across the full development lifecycle: automated research, agentic planning, AI-assisted implementation and testing, code review, and real-time monitoring agents embedded in CI/CD pipelines. International award-winning engineer with a published paper on LLM-based legacy code modernization. Currently coaching next-generation AI engineers at VinGroup's AI20K program.
+      </p>
+      <p class="summary-text variant-fellowship">
+        AI researcher and engineer specializing in LLM alignment, empirical evaluation, and applied ML for code intelligence. Conducted a systematic alignment research campaign on a large-scale Mixture-of-Experts model — spanning preference optimization (ORPO) and reinforcement learning from verifiable code execution rewards (DAPO) — and developed a novel <strong>MoE-aware SLERP merging technique</strong> to resolve catastrophic forgetting. Published author on LLM-based mainframe code intelligence; creator of <strong>MainframeBench</strong>, the first benchmark for COBOL/JCL/PL/I code understanding. Research interests span LLM alignment methodology, RL from verifiable feedback, and multi-agent system reliability. Applies AI across the full engineering and research lifecycle — from automated literature synthesis and agentic planning to real-time monitoring — enabling self-improving, continuously validated workflows.
+      </p>
+      <p class="summary-text variant-agi">
+        AI researcher and engineer with 3+ years building large-scale LLM systems, multi-agent frameworks, and AI infrastructure at FPT Software AI Center. Specialized a 20B-parameter Mixture-of-Experts model through a full alignment pipeline (SFT → SLERP → ORPO → DAPO), contributing a novel <strong>MoE-aware component-wise merging technique</strong> and applying RL from verifiable code execution rewards. Designed production-grade <strong>multi-agent orchestration</strong> with custom tool ecosystems, context management, and reliability guardrails — spanning foundation model fine-tuning, agentic platform engineering, and AI-driven development workflows. Published researcher on LLM-based code intelligence; creator of <strong>MainframeBench</strong>. Two-time international AI innovation award winner.
+      </p>
+    </section>
+
+    <!-- ── WORK EXPERIENCE ── -->
+    <section class="resume-section" data-section="experience">
+      <h2 class="section-title">Work Experience</h2>
+
+      <!-- FPT Software AI Center -->
+      <article class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="entry-title">AI Engineer</span>
+            <span class="entry-org">FPT Software AI Center</span>
+          </div>
+          <div class="entry-right">
+            <span class="entry-location">Hanoi, Vietnam</span>
+            <span class="entry-date">Jul. 2022 – Present</span>
+          </div>
+        </div>
+        <ul class="entry-items">
+          <li>
+            <strong>AI-Driven Engineering Practice:</strong> Transformed the engineering and research workflow by embedding AI agents across the full development lifecycle. Automated literature and technology research to accelerate decision-making; used agentic planning for task decomposition and sprint structuring; applied AI-assisted coding, test generation, and code review in daily practice. Deployed <strong>real-time monitoring agents</strong> that detect, diagnose, and respond to application issues as they occur, and integrated AI into CI/CD pipelines to enable continuously validated, self-improving delivery.
+          </li>
+          <li>
+            <strong>Legacy Modernization / XMainframe (2023–Present):</strong> Led development of an agentic AI platform for mainframe code analysis (COBOL/JCL/PL/I). Designed multi-agent orchestration with custom static-analysis tools and real-time streaming interfaces. Engineered a production-grade <strong>agent harness</strong> with context management, tool-result budgeting, middleware hooks, prompt caching, and reliability guardrails — informed by a systematic review of leading agent frameworks. Co-authored the published technical report.
+          </li>
+          <li>
+            <strong>XMainframe LLM Specialization (2025–2026):</strong> Specialized a large-scale Mixture-of-Experts LLM for mainframe domains through a 4-stage alignment pipeline (SFT → SLERP → ORPO → DAPO). Developed a novel <strong>MoE-aware SLERP merging technique</strong> to resolve catastrophic forgetting in expert layers, with meaningful gains in multilingual reasoning and code summarization. Built a domain-specific evaluation suite from real mainframe codebases. Also fine-tuned <strong>COBOL-Coder-14B</strong> on domain-specific data, achieving state-of-the-art performance on COBOL code generation and translation benchmarks.
+          </li>
+          <li>
+            <strong>AgentVista / Metis (2025):</strong> Architected an enterprise agentic AI platform with state-machine-based workflow orchestration and hybrid RAG pipelines combining vector search and knowledge graphs for code review, documentation, and knowledge extraction.
+          </li>
+          <li>
+            <strong>SoundAI &amp; SenseAI – Time Series MLOps (2022–2023):</strong> Delivered a serverless MLOps platform for acoustic anomaly detection in manufacturing, including stream and batch pipelines, model operations, and automated deployment across Edge and Cloud environments.
+          </li>
+          <!-- General + Academic only -->
+          <li class="variant-general variant-academic">
+            <strong>TBA Xray i2 (2022–2023):</strong> Built industrial computer vision models, rule-based inspection logic, and edge-deployable AI applications for X-ray quality inspection in FPT's first project with LandingAI; delivered on-device inference pipeline running on NVIDIA Jetson hardware at production throughput.
+          </li>
+          <li class="variant-general variant-academic">
+            Fine-tuned domain-adapted LLMs on curated datasets; optimized inference serving for production-scale throughput and latency requirements.
+          </li>
+          <li class="variant-general variant-academic">
+            Built multi-stage data and model pipelines; established experiment tracking and model registry workflows adopted across AI Center projects.
+          </li>
+          <!-- Industry compressed bullet -->
+          <li class="variant-industry">
+            Fine-tuned domain-adapted LLMs on curated datasets; optimized model serving infrastructure for production-scale throughput and latency.
+          </li>
+        </ul>
+      </article>
+
+      <!-- AI20K / VinGroup -->
+      <article class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="entry-title">Lab Coach</span>
+            <span class="entry-org">AI20K Program — VinGroup &amp; VinUniversity</span>
+          </div>
+          <div class="entry-right">
+            <span class="entry-location">Vietnam</span>
+            <span class="entry-date">Mar. 2026 – Present</span>
+          </div>
+        </div>
+        <ul class="entry-items">
+          <!-- General + Academic only -->
+          <li class="variant-general variant-academic">
+            AI20K is a competency-based AI training program at VinGroup designed to develop practical skills in building and deploying AI Agents in enterprise environments.
+          </li>
+          <!-- Shared bullet (different wording for industry) -->
+          <li class="variant-general variant-academic">
+            Coach and mentor practitioners across three competency tracks: <strong>AI Business &amp; Product</strong> (problem framing, ROI, governance), <strong>AI Infrastructure &amp; Data</strong> (data pipelines, MLOps/LLMOps, monitoring), and <strong>AI Application</strong> (LLM engineering, agentic design, RAG, multi-agent systems, evaluation).
+          </li>
+          <li class="variant-industry">
+            Coach practitioners across three tracks — <strong>AI Business &amp; Product</strong>, <strong>AI Infrastructure &amp; Data</strong>, and <strong>AI Application</strong> — covering LLM engineering, agentic design, and multi-agent system deployment for VinGroup's enterprise AI program.
+          </li>
+          <li>
+            Facilitate lab sessions combining hands-on exercises, project builds, and mentor reviews across the Foundation, Specialization, and Enterprise Practicum phases.
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ── EDUCATION ── -->
+    <section class="resume-section" data-section="education">
+      <h2 class="section-title">Education</h2>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="entry-title">B.S. in Computer Science</span>
+            <span class="entry-org">Troy University</span>
+          </div>
+          <div class="entry-right">
+            <span class="entry-location">Hanoi, Vietnam (HUST Campus)</span>
+            <span class="entry-date">2018 – 2023</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="entry-title">AI Residency Program, Batch 3</span>
+            <span class="entry-org">FPT AI Center</span>
+          </div>
+          <div class="entry-right">
+            <span class="entry-location">Hanoi, Vietnam</span>
+            <span class="entry-date">Jul. 2022</span>
+          </div>
+        </div>
+        <ul class="entry-items">
+          <li>Competitive research residency focusing on applied AI and production ML systems</li>
+          <li>Trained and mentored by PhD-level researchers and global AI experts</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ── PUBLICATIONS ── -->
+    <section class="resume-section" data-section="publications">
+      <h2 class="section-title">Publications</h2>
+
+      <article class="entry">
+        <div class="entry-header">
+          <div class="entry-left">
+            <span class="entry-title">XMainframe: A Large Language Model for Mainframe Modernization</span>
+            <span class="pub-venue">
+              <a href="https://arxiv.org/abs/2408.04660" target="_blank" rel="noopener">arXiv:2408.04660 ↗</a>
+            </span>
+          </div>
+          <div class="entry-right">
+            <span class="entry-date">Aug. 2024</span>
+          </div>
+        </div>
+        <p class="pub-authors">
+          Anh T. V. Dau, <strong>Hieu Trung Dao</strong>, Anh Tuan Nguyen, Hieu Trung Tran, Phong X. Nguyen, Nghi D. Q. Bui
+        </p>
+        <ul class="entry-items">
+          <li>Developed a domain-specialized LLM for COBOL/JCL comprehension with significant gains in code understanding and summarization accuracy</li>
+          <li>Created <strong>MainframeBench</strong>: first comprehensive benchmark for mainframe code understanding across COBOL, JCL, and PL/I</li>
+          <li>Global media coverage: MarkTechPost (US), ITmedia AI+, Ledge.ai (Japan)</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ── HONORS & AWARDS ── -->
+    <section class="resume-section" data-section="honors">
+      <h2 class="section-title">Honors &amp; Awards</h2>
+
+      <div class="honor-row">
+        <span class="honor-award">Best Rookie of the Year 2023</span>
+        <span class="honor-event">FPT Software AI Center</span>
+        <span class="honor-location">Hanoi, Vietnam</span>
+        <span class="honor-date">2023</span>
+      </div>
+      <div class="honor-row">
+        <span class="honor-award">Gold Globee Winner for Manufacturing</span>
+        <span class="honor-event">IT World Awards</span>
+        <span class="honor-location">International</span>
+        <span class="honor-date">2023</span>
+      </div>
+      <div class="honor-row">
+        <span class="honor-award">Gold Award for Innovation in Construction, Manufacturing or Materials</span>
+        <span class="honor-event">Asia-Pacific Stevie Awards</span>
+        <span class="honor-location">Asia-Pacific</span>
+        <span class="honor-date">2023</span>
+      </div>
+    </section>
+
+    <!-- ── COMPETITIONS / PROJECTS ── -->
+    <section class="resume-section" data-section="competitions">
+      <h2 class="section-title">Competitions &amp; Projects</h2>
+
+      <div class="comp-entry">
+        <div class="comp-header">
+          <span class="comp-title">StickerAI: Generative AI Sticker Creation</span>
+          <span class="comp-award">Winner — AI Center Hackathon</span>
+          <span class="comp-date">2023</span>
+        </div>
+        <p class="comp-desc">Built an end-to-end sticker generation system with Stable Diffusion and optimized Triton deployment.</p>
+      </div>
+
+      <div class="comp-entry">
+        <div class="comp-header">
+          <span class="comp-title">Cough-based COVID-19 Detection</span>
+          <span class="comp-award">3rd Place — AICOVIDVN Challenge</span>
+          <span class="comp-date">2021</span>
+        </div>
+        <p class="comp-desc">Developed a deep learning classifier for COVID-19 detection from cough audio and placed 3rd in Phase 1.</p>
+      </div>
+
+      <div class="comp-entry">
+        <div class="comp-header">
+          <span class="comp-title">Machine Learning Credit Risk Model</span>
+          <span class="comp-award">Top 4% — Kalapa Credit Scoring Challenge</span>
+          <span class="comp-date">2021</span>
+        </div>
+        <p class="comp-desc">Built a credit scoring model using WoE-IV feature engineering and ensemble methods; ranked in the top 4%.</p>
+      </div>
+    </section>
+
+    <!-- ── CERTIFICATES ── -->
+    <section class="resume-section" data-section="certificates">
+      <h2 class="section-title">Certificates</h2>
+
+      <div class="cert-row">
+        <span class="cert-name">Databricks Certified</span>
+        <span class="cert-cred">Data Engineer Associate</span>
+        <span class="cert-date">2023</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">Udacity Nanodegree</span>
+        <span class="cert-cred">Machine Learning DevOps Engineer</span>
+        <span class="cert-date">2022</span>
+      </div>
+    </section>
+
+  </main>
+</div><!-- /.resume-page -->
+
+<script>
+(function () {
+  'use strict';
+
+  var body   = document.body;
+  var tabs   = document.querySelectorAll('.tab');
+  var toggle = document.querySelector('.theme-toggle');
+  var html   = document.documentElement;
+
+  /* Variant — query param takes priority (for headless PDF export),
+     then localStorage, then default 'general' */
+  var qp      = new URLSearchParams(location.search).get('variant');
+  var initial = qp || localStorage.getItem('resume-variant') || 'general';
+  setVariant(initial);
+
+  /* Theme */
+  var savedTheme = localStorage.getItem('resume-theme') || 'light';
+  html.setAttribute('data-theme', savedTheme);
+  toggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { setVariant(tab.dataset.variant); });
+  });
+
+  toggle.addEventListener('click', function () {
+    var cur  = html.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    toggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('resume-theme', next);
+  });
+
+  function setVariant(v) {
+    var valid = ['general', 'academic', 'industry', 'fellowship', 'agi'];
+    if (valid.indexOf(v) === -1) v = 'general';
+    body.setAttribute('data-variant', v);
+    tabs.forEach(function (t) {
+      t.classList.toggle('active', t.dataset.variant === v);
+      t.setAttribute('aria-selected', t.dataset.variant === v);
+    });
+    localStorage.setItem('resume-variant', v);
+  }
+
+  /* ── Print: reorder DOM sections to match active variant ── */
+  var sectionOrder = {
+    general:    ['summary','experience','education','publications','honors','competitions','certificates'],
+    academic:   ['summary','education','publications','experience','honors','competitions','certificates'],
+    industry:   ['summary','experience','publications','education','honors','competitions','certificates'],
+    fellowship: ['summary','publications','experience','honors','education','competitions','certificates'],
+    agi:        ['summary','experience','publications','honors','education','competitions','certificates']
+  };
+
+  var resumeBody = document.querySelector('.resume-body');
+  var savedOrder = null;
+
+  function reorderForPrint() {
+    var v = body.getAttribute('data-variant') || 'general';
+    var order = sectionOrder[v] || sectionOrder.general;
+    savedOrder = Array.from(resumeBody.children);
+    order.forEach(function (name) {
+      var sec = resumeBody.querySelector('[data-section="' + name + '"]');
+      if (sec) resumeBody.appendChild(sec);
+    });
+  }
+
+  function restoreOrder() {
+    if (savedOrder) {
+      savedOrder.forEach(function (el) { resumeBody.appendChild(el); });
+      savedOrder = null;
+    }
+  }
+
+  window.addEventListener('beforeprint', reorderForPrint);
+  window.addEventListener('afterprint',  restoreOrder);
+}());
+</script>
+</body>
 </html>
