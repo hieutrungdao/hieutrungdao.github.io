@@ -315,38 +315,27 @@ body {
 .cert-date   { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
 
 /* ── Variant content toggling ──────────────────────── */
-.variant-academic,
+/* Unclassed content renders in both variants. Every variant class MUST be
+   listed in this default-hide rule, or its content leaks into the other. */
 .variant-industry,
-.variant-fellowship { display: none; }
-.variant-general    { display: revert; }
+.variant-academic   { display: none; }
 
-body[data-variant="academic"] .variant-general   { display: none; }
-body[data-variant="academic"] .variant-academic  { display: revert; }
+body[data-variant="industry"] .variant-industry { display: revert; }
+body[data-variant="academic"] .variant-academic { display: revert; }
 
-body[data-variant="industry"] .variant-general   { display: none; }
-body[data-variant="industry"] .variant-industry  { display: revert; }
-
-/* Fellowship: inherits academic bullets, swaps summary paragraph */
-body[data-variant="fellowship"] .variant-general    { display: none; }
-body[data-variant="fellowship"] .variant-academic   { display: revert; }
-body[data-variant="fellowship"] p.variant-academic  { display: none; }
-body[data-variant="fellowship"] .variant-fellowship { display: revert; }
-
-/* AGI: inherits academic bullets, swaps summary paragraph */
-body[data-variant="agi"] .variant-general    { display: none; }
-body[data-variant="agi"] .variant-academic   { display: revert; }
-body[data-variant="agi"] p.variant-academic  { display: none; }
-body[data-variant="agi"] .variant-agi        { display: revert; }
+/* Certificates hidden in all variants.
+   To restore: delete this one rule (markup and ordering are still intact). */
+[data-section="certificates"] { display: none; }
 
 /* ── Section ordering ──────────────────────────────── */
-/* General */
-body[data-variant="general"] [data-section="summary"]      { order: 1; }
-body[data-variant="general"] [data-section="experience"]   { order: 2; }
-body[data-variant="general"] [data-section="education"]    { order: 3; }
-body[data-variant="general"] [data-section="publications"] { order: 4; }
-body[data-variant="general"] [data-section="honors"]       { order: 5; }
-body[data-variant="general"] [data-section="competitions"] { order: 7; }
-body[data-variant="general"] [data-section="certificates"] { order: 8; }
+/* Industry */
+body[data-variant="industry"] [data-section="summary"]      { order: 1; }
+body[data-variant="industry"] [data-section="experience"]   { order: 2; }
+body[data-variant="industry"] [data-section="publications"] { order: 3; }
+body[data-variant="industry"] [data-section="education"]    { order: 4; }
+body[data-variant="industry"] [data-section="honors"]       { order: 5; }
+body[data-variant="industry"] [data-section="competitions"] { order: 6; }
+body[data-variant="industry"] [data-section="certificates"] { order: 7; }
 /* Academic */
 body[data-variant="academic"] [data-section="summary"]      { order: 1; }
 body[data-variant="academic"] [data-section="education"]    { order: 2; }
@@ -355,30 +344,6 @@ body[data-variant="academic"] [data-section="experience"]   { order: 4; }
 body[data-variant="academic"] [data-section="honors"]       { order: 5; }
 body[data-variant="academic"] [data-section="competitions"] { order: 6; }
 body[data-variant="academic"] [data-section="certificates"] { order: 7; }
-/* Industry */
-body[data-variant="industry"] [data-section="summary"]      { order: 1; }
-body[data-variant="industry"] [data-section="experience"]   { order: 2; }
-body[data-variant="industry"] [data-section="publications"] { order: 3; }
-body[data-variant="industry"] [data-section="education"]    { order: 5; }
-body[data-variant="industry"] [data-section="honors"]       { order: 6; }
-body[data-variant="industry"] [data-section="competitions"] { order: 7; }
-body[data-variant="industry"] [data-section="certificates"] { order: 8; }
-/* Fellowship: publications lead, then experience */
-body[data-variant="fellowship"] [data-section="summary"]      { order: 1; }
-body[data-variant="fellowship"] [data-section="publications"] { order: 2; }
-body[data-variant="fellowship"] [data-section="experience"]   { order: 3; }
-body[data-variant="fellowship"] [data-section="honors"]       { order: 4; }
-body[data-variant="fellowship"] [data-section="education"]    { order: 5; }
-body[data-variant="fellowship"] [data-section="competitions"] { order: 6; }
-body[data-variant="fellowship"] [data-section="certificates"] { order: 7; }
-/* AGI: experience first, publications after */
-body[data-variant="agi"] [data-section="summary"]      { order: 1; }
-body[data-variant="agi"] [data-section="experience"]   { order: 2; }
-body[data-variant="agi"] [data-section="publications"] { order: 3; }
-body[data-variant="agi"] [data-section="honors"]       { order: 4; }
-body[data-variant="agi"] [data-section="education"]    { order: 5; }
-body[data-variant="agi"] [data-section="competitions"] { order: 6; }
-body[data-variant="agi"] [data-section="certificates"] { order: 7; }
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 640px) {
@@ -430,17 +395,14 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
 }
 </style>
 </head>
-<body data-variant="general">
+<body data-variant="industry">
 
 <!-- ═══ CONTROLS (screen only) ═══════════════════════════════════════ -->
 <div class="controls" aria-label="Resume controls">
   <span class="controls-label">Variant</span>
   <div class="variant-tabs" role="tablist">
-    <button class="tab active" role="tab" data-variant="general"     aria-selected="true">General</button>
-    <button class="tab"        role="tab" data-variant="academic"    aria-selected="false">Academic</button>
-    <button class="tab"        role="tab" data-variant="industry"    aria-selected="false">Industry</button>
-    <button class="tab"        role="tab" data-variant="fellowship"  aria-selected="false">Fellowship</button>
-    <button class="tab"        role="tab" data-variant="agi"         aria-selected="false">AGI Research</button>
+    <button class="tab active" role="tab" data-variant="industry" aria-selected="true">Industry</button>
+    <button class="tab"        role="tab" data-variant="academic" aria-selected="false">Academic</button>
   </div>
   <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
 </div>
@@ -482,20 +444,11 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
     <!-- ── SUMMARY ── -->
     <section class="resume-section" data-section="summary">
       <h2 class="section-title">Summary</h2>
-      <p class="summary-text variant-general">
-        AI Engineer with 3+ years at FPT Software AI Center, delivering production LLM applications, agentic AI platforms, and MLOps infrastructure across enterprise and industrial domains. Applies AI across the full development lifecycle — from automated research and agentic planning through AI-assisted implementation, testing, and code review to real-time monitoring agents embedded in delivery workflows. Specialized a large-scale MoE LLM for the mainframe domain through a multi-stage alignment pipeline. Published researcher on LLM-based mainframe modernization; creator of <strong>MainframeBench</strong>, the first COBOL/JCL comprehension benchmark. Two-time international AI innovation award winner (IT World Awards Gold Globee; Asia-Pacific Stevie Gold Awards). Active contributor to Vietnam's AI ecosystem as Lab Coach at VinGroup's AI20K program.
+      <p class="summary-text variant-industry">
+        LLM and Agentic AI Engineer with 5+ years of AI experience delivering production AI end-to-end — from MoE LLM specialization and alignment to long-horizon multi-agent orchestration, hybrid RAG, and agent harness engineering at enterprise scale. Research direction: trained LLMs are static — knowledge and behavior frozen at training time — making the model itself the critical bottleneck for deployed agents. Focused on moving optimization from <strong>weight space to text space</strong>: self-evolving agents and harnesses that optimize their own skills, prompts, and memory on the fly, without retraining. International award-winning engineer and published author on LLM-based legacy code modernization. Lecturer at VinGroup's AI20K enterprise AI program.
       </p>
       <p class="summary-text variant-academic">
-        AI Engineer and Researcher at FPT Software AI Center specializing in large language models, agentic systems, and applied ML for software engineering tasks. Published work on LLM-based mainframe modernization introduces <strong>MainframeBench</strong> — the first benchmark for COBOL/JCL/PL/I code understanding — with significant accuracy and summarization improvements covered by global AI media. Conducted a systematic alignment research campaign on a large-scale MoE LLM (SFT → SLERP → ORPO → DAPO); contributions include a novel MoE-aware SLERP merging technique. Research interests span LLM alignment methodology, multi-agent system design, and scalable AI infrastructure. Recipient of two international AI innovation awards (IT World Awards Gold Globee; Asia-Pacific Stevie Gold). Currently mentoring AI practitioners at VinGroup's AI20K program.
-      </p>
-      <p class="summary-text variant-industry">
-        LLM and Agentic AI Engineer with 3+ years at FPT Software AI Center, delivering production AI systems end-to-end — from MoE LLM specialization and alignment to multi-agent orchestration, hybrid RAG pipelines, and agent harness engineering at enterprise scale. Applies AI across the full development lifecycle: automated research, agentic planning, AI-assisted implementation and testing, code review, and real-time monitoring agents embedded in CI/CD pipelines. International award-winning engineer with a published paper on LLM-based legacy code modernization. Currently coaching next-generation AI engineers at VinGroup's AI20K program.
-      </p>
-      <p class="summary-text variant-fellowship">
-        AI researcher and engineer specializing in LLM alignment, empirical evaluation, and applied ML for code intelligence. Conducted a systematic alignment research campaign on a large-scale Mixture-of-Experts model — spanning preference optimization (ORPO) and reinforcement learning from verifiable code execution rewards (DAPO) — and developed a novel <strong>MoE-aware SLERP merging technique</strong> to resolve catastrophic forgetting. Published author on LLM-based mainframe code intelligence; creator of <strong>MainframeBench</strong>, the first benchmark for COBOL/JCL/PL/I code understanding. Research interests span LLM alignment methodology, RL from verifiable feedback, and multi-agent system reliability. Applies AI across the full engineering and research lifecycle — from automated literature synthesis and agentic planning to real-time monitoring — enabling self-improving, continuously validated workflows.
-      </p>
-      <p class="summary-text variant-agi">
-        AI researcher and engineer with 3+ years building large-scale LLM systems, multi-agent frameworks, and AI infrastructure at FPT Software AI Center. Specialized a 20B-parameter Mixture-of-Experts model through a full alignment pipeline (SFT → SLERP → ORPO → DAPO), contributing a novel <strong>MoE-aware component-wise merging technique</strong> and applying RL from verifiable code execution rewards. Designed production-grade <strong>multi-agent orchestration</strong> with custom tool ecosystems, context management, and reliability guardrails — spanning foundation model fine-tuning, agentic platform engineering, and AI-driven development workflows. Published researcher on LLM-based code intelligence; creator of <strong>MainframeBench</strong>. Two-time international AI innovation award winner.
+        AI Engineer and Researcher with 5+ years of AI experience in large language models, long-horizon agentic systems, and applied ML for software engineering. Specialized a large-scale Mixture-of-Experts LLM through a full alignment pipeline (SFT → SLERP → ORPO → DAPO), contributing a novel MoE-aware merging technique, and created MainframeBench, the first COBOL/JCL/PL/I comprehension benchmark. Research direction: trained LLMs are static — knowledge and behavior frozen at training time — and this has become the critical bottleneck for deployed agents. Aims to move optimization from <strong>weight space to text space</strong>: self-evolving agents that refine their own skills, memory, and harness on the fly without retraining, carrying alignment methods such as RL from verifiable rewards into text space. Lecturer at VinGroup's AI20K program.
       </p>
     </section>
 
@@ -520,10 +473,10 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
             <strong>AI-Driven Engineering Practice:</strong> Transformed the engineering and research workflow by embedding AI agents across the full development lifecycle. Automated literature and technology research to accelerate decision-making; used agentic planning for task decomposition and sprint structuring; applied AI-assisted coding, test generation, and code review in daily practice. Deployed <strong>real-time monitoring agents</strong> that detect, diagnose, and respond to application issues as they occur, and integrated AI into CI/CD pipelines to enable continuously validated, self-improving delivery.
           </li>
           <li>
-            <strong>Legacy Modernization / XMainframe (2023–Present):</strong> Led development of an agentic AI platform for mainframe code analysis (COBOL/JCL/PL/I). Designed multi-agent orchestration with custom static-analysis tools and real-time streaming interfaces. Engineered a production-grade <strong>agent harness</strong> with context management, tool-result budgeting, middleware hooks, prompt caching, and reliability guardrails — informed by a systematic review of leading agent frameworks. Co-authored the published technical report.
+            <strong>Legacy Modernization / XMainframe (2023–Present):</strong> Led development of an agentic AI platform for mainframe <strong>maintenance and modernization</strong> (COBOL/JCL/PL/I) spanning the maintenance SDLC: code comprehension and documentation, change impact analysis across programs, copybooks, and JCL, bug investigation via data-flow tracing, refactoring planning, and test-gap analysis. Applied and optimized <strong>long-horizon agentic execution</strong> across large legacy codebases via context management, tool-result budgeting, middleware hooks, prompt caching, and reliability guardrails, with multi-agent orchestration over custom static-analysis tools and real-time streaming interfaces. Built environments for agent trajectory generation and data-centric optimization: an emulated mainframe runtime (COBOL compilation and execution with CICS, JCL/JES, datasets, Db2, IMS, and MQ) for running legacy workloads off-host, and a behavior-verified modernization pipeline (analyze → capture/replay → rewrite → verify → cut over) built on differential equivalence testing.
           </li>
           <li>
-            <strong>XMainframe LLM Specialization (2025–2026):</strong> Specialized a large-scale Mixture-of-Experts LLM for mainframe domains through a 4-stage alignment pipeline (SFT → SLERP → ORPO → DAPO). Developed a novel <strong>MoE-aware SLERP merging technique</strong> to resolve catastrophic forgetting in expert layers, with meaningful gains in multilingual reasoning and code summarization. Built a domain-specific evaluation suite from real mainframe codebases. Also fine-tuned <strong>COBOL-Coder-14B</strong> on domain-specific data, achieving state-of-the-art performance on COBOL code generation and translation benchmarks.
+            <strong>XMainframe LLM Specialization:</strong> Specialized LLMs for mainframe domains, from the original XMainframe model and MainframeBench to large-scale Mixture-of-Experts models. Built a multi-stage alignment pipeline: LoRA SFT, MoE-aware SLERP merging and model soups to resolve catastrophic forgetting in expert layers, ORPO preference optimization, and GRPO-family reinforcement learning (DAPO) with verifiable code-execution rewards. Established an evaluation methodology pairing academic benchmarks with conversation replay on real production traffic, which exposed benchmark–product divergence and made “beat the untouched base” a gate for every training stage.
           </li>
           <li>
             <strong>AgentVista / Metis (2025):</strong> Architected an enterprise agentic AI platform with state-machine-based workflow orchestration and hybrid RAG pipelines combining vector search and knowledge graphs for code review, documentation, and knowledge extraction.
@@ -531,14 +484,13 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
           <li>
             <strong>SoundAI &amp; SenseAI – Time Series MLOps (2022–2023):</strong> Delivered a serverless MLOps platform for acoustic anomaly detection in manufacturing, including stream and batch pipelines, model operations, and automated deployment across Edge and Cloud environments.
           </li>
-          <!-- General + Academic only -->
-          <li class="variant-general variant-academic">
-            <strong>TBA Xray i2 (2022–2023):</strong> Built industrial computer vision models, rule-based inspection logic, and edge-deployable AI applications for X-ray quality inspection in FPT's first project with LandingAI; delivered on-device inference pipeline running on NVIDIA Jetson hardware at production throughput.
+          <li>
+            <strong>TBA Xray i2 — Computer Vision (2022–2023):</strong> Built industrial computer vision for X-ray quality inspection in FPT's first project with LandingAI. Developed <strong>object detection</strong> models for defect localization and a <strong>multi-object tracking</strong> pipeline maintaining consistent item identities across frames. Implemented rule-based inspection logic and delivered an edge inference pipeline on NVIDIA Jetson hardware at production throughput.
           </li>
-          <li class="variant-general variant-academic">
+          <li class="variant-academic">
             Fine-tuned domain-adapted LLMs on curated datasets; optimized inference serving for production-scale throughput and latency requirements.
           </li>
-          <li class="variant-general variant-academic">
+          <li class="variant-academic">
             Built multi-stage data and model pipelines; established experiment tracking and model registry workflows adopted across AI Center projects.
           </li>
           <!-- Industry compressed bullet -->
@@ -552,7 +504,7 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
       <article class="entry">
         <div class="entry-header">
           <div class="entry-left">
-            <span class="entry-title">Lab Coach</span>
+            <span class="entry-title">Lecturer</span>
             <span class="entry-org">AI20K Program — VinGroup &amp; VinUniversity</span>
           </div>
           <div class="entry-right">
@@ -561,19 +513,19 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
           </div>
         </div>
         <ul class="entry-items">
-          <!-- General + Academic only -->
-          <li class="variant-general variant-academic">
+          <!-- Academic only -->
+          <li class="variant-academic">
             AI20K is a competency-based AI training program at VinGroup designed to develop practical skills in building and deploying AI Agents in enterprise environments.
           </li>
-          <!-- Shared bullet (different wording for industry) -->
-          <li class="variant-general variant-academic">
-            Coach and mentor practitioners across three competency tracks: <strong>AI Business &amp; Product</strong> (problem framing, ROI, governance), <strong>AI Infrastructure &amp; Data</strong> (data pipelines, MLOps/LLMOps, monitoring), and <strong>AI Application</strong> (LLM engineering, agentic design, RAG, multi-agent systems, evaluation).
+          <!-- Academic wording (industry version below) -->
+          <li class="variant-academic">
+            Teach and mentor practitioners across two competency tracks: <strong>AI Infrastructure &amp; Data</strong> (data pipelines, MLOps/LLMOps, monitoring) and <strong>AI Application</strong> (LLM engineering, agentic design, RAG, multi-agent systems, computer vision, evaluation).
           </li>
           <li class="variant-industry">
-            Coach practitioners across three tracks — <strong>AI Business &amp; Product</strong>, <strong>AI Infrastructure &amp; Data</strong>, and <strong>AI Application</strong> — covering LLM engineering, agentic design, and multi-agent system deployment for VinGroup's enterprise AI program.
+            Teach practitioners across two tracks — <strong>AI Infrastructure &amp; Data</strong> and <strong>AI Application</strong> — covering LLM engineering, agentic design, multi-agent system deployment, and computer vision for VinGroup's enterprise AI program.
           </li>
           <li>
-            Facilitate lab sessions combining hands-on exercises, project builds, and mentor reviews across the Foundation, Specialization, and Enterprise Practicum phases.
+            Lead lab sessions combining hands-on exercises, project builds, and mentor reviews across the Foundation, Specialization, and Enterprise Practicum phases.
           </li>
         </ul>
       </article>
@@ -591,7 +543,7 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
           </div>
           <div class="entry-right">
             <span class="entry-location">Hanoi, Vietnam (HUST Campus)</span>
-            <span class="entry-date">2018 – 2023</span>
+            <span class="entry-date">2018 – 2022</span>
           </div>
         </div>
       </article>
@@ -634,7 +586,7 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
           Anh T. V. Dau, <strong>Hieu Trung Dao</strong>, Anh Tuan Nguyen, Hieu Trung Tran, Phong X. Nguyen, Nghi D. Q. Bui
         </p>
         <ul class="entry-items">
-          <li>Developed a domain-specialized LLM for COBOL/JCL comprehension with significant gains in code understanding and summarization accuracy</li>
+          <li>Developed a domain-specialized LLM for COBOL/JCL comprehension: <strong>77.89%</strong> MCQ accuracy (+30% over DeepSeek-Coder) and <strong>62.58</strong> BLEU-4 on code summarization (~6× GPT-3.5)</li>
           <li>Created <strong>MainframeBench</strong>: first comprehensive benchmark for mainframe code understanding across COBOL, JCL, and PL/I</li>
           <li>Global media coverage: MarkTechPost (US), ITmedia AI+, Ledge.ai (Japan)</li>
         </ul>
@@ -686,15 +638,6 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
         </div>
         <p class="comp-desc">Developed a deep learning classifier for COVID-19 detection from cough audio and placed 3rd in Phase 1.</p>
       </div>
-
-      <div class="comp-entry">
-        <div class="comp-header">
-          <span class="comp-title">Machine Learning Credit Risk Model</span>
-          <span class="comp-award">Top 4% — Kalapa Credit Scoring Challenge</span>
-          <span class="comp-date">2021</span>
-        </div>
-        <p class="comp-desc">Built a credit scoring model using WoE-IV feature engineering and ensemble methods; ranked in the top 4%.</p>
-      </div>
     </section>
 
     <!-- ── CERTIFICATES ── -->
@@ -726,9 +669,9 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
   var html   = document.documentElement;
 
   /* Variant — query param takes priority (for headless PDF export),
-     then localStorage, then default 'general' */
+     then localStorage, then default 'industry' */
   var qp      = new URLSearchParams(location.search).get('variant');
-  var initial = qp || localStorage.getItem('resume-variant') || 'general';
+  var initial = qp || localStorage.getItem('resume-variant') || 'industry';
   setVariant(initial);
 
   /* Theme */
@@ -749,8 +692,8 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
   });
 
   function setVariant(v) {
-    var valid = ['general', 'academic', 'industry', 'fellowship', 'agi'];
-    if (valid.indexOf(v) === -1) v = 'general';
+    var valid = ['industry', 'academic'];
+    if (valid.indexOf(v) === -1) v = 'industry';
     body.setAttribute('data-variant', v);
     tabs.forEach(function (t) {
       t.classList.toggle('active', t.dataset.variant === v);
@@ -761,19 +704,16 @@ body[data-variant="agi"] [data-section="certificates"] { order: 7; }
 
   /* ── Print: reorder DOM sections to match active variant ── */
   var sectionOrder = {
-    general:    ['summary','experience','education','publications','honors','competitions','certificates'],
-    academic:   ['summary','education','publications','experience','honors','competitions','certificates'],
-    industry:   ['summary','experience','publications','education','honors','competitions','certificates'],
-    fellowship: ['summary','publications','experience','honors','education','competitions','certificates'],
-    agi:        ['summary','experience','publications','honors','education','competitions','certificates']
+    industry: ['summary','experience','publications','education','honors','competitions','certificates'],
+    academic: ['summary','education','publications','experience','honors','competitions','certificates']
   };
 
   var resumeBody = document.querySelector('.resume-body');
   var savedOrder = null;
 
   function reorderForPrint() {
-    var v = body.getAttribute('data-variant') || 'general';
-    var order = sectionOrder[v] || sectionOrder.general;
+    var v = body.getAttribute('data-variant') || 'industry';
+    var order = sectionOrder[v] || sectionOrder.industry;
     savedOrder = Array.from(resumeBody.children);
     order.forEach(function (name) {
       var sec = resumeBody.querySelector('[data-section="' + name + '"]');
